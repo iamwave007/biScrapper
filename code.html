@@ -1,0 +1,58 @@
+
+<!-- Business Insider scrapper
+ -->
+<script>
+
+var jq = document.createElement('script');
+jq.src = "https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js";
+document.getElementsByTagName('head')[0].appendChild(jq);
+jQuery.noConflict()
+
+
+//remove
+jQuery("head script").remove()
+jQuery("head meta").remove()
+jQuery("head style").remove()
+jQuery("html iframe").remove()
+jQuery(".KonaBody.post-content").find("h3 strong").remove()
+jQuery(".KonaBody.post-content").find("h2 strong").remove()
+jQuery(".KonaBody.post-content").find("h1 strong").remove()
+jQuery(".KonaBody.post-content").find("h1 a").remove()
+jQuery(".KonaBody.post-content").find("h2 a").remove()
+jQuery(".KonaBody.post-content").find("h3 a").remove()
+jQuery("html").removeAttr( "xmlns" )
+jQuery("html").removeAttr( "xmlns:fb" )
+jQuery("html").removeAttr( "class" )
+
+//keep
+var ttl=jQuery(".content.post h1")[0]
+var ctt=jQuery('.KonaFilter.image-container').nextUntil('div').andSelf()
+// var lk1=jQuery("head link:nth-child(4)")
+// var lk2=jQuery("head link:nth-child(5)")
+//remove all
+jQuery("body").html("")
+
+
+// recover
+jQuery("body").append('<div class="span8">')
+jQuery(".span8").append('<div class="content post">')
+jQuery(".content.post").append('<div class="KonaBody post-content">')
+jQuery(".content.post").prepend(ttl)
+jQuery(".KonaBody.post-content").append(ctt)
+
+// jQuery("head").append(lk1)
+// jQuery("head").append(lk2)
+
+// <div class="span8">
+//   <div class="content post">
+//     <!-- <h1></h1> -->
+//     <div class="KonaBody post-content">
+//       <!-- article body -->
+//     </div>
+//   </div>
+// </div>
+
+
+
+
+</script>
